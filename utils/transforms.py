@@ -27,7 +27,7 @@ def get_train_aug():
         A.ToGray(p=0.1),
         A.RandomBrightnessContrast(p=0.1),
         A.ColorJitter(p=0.1),
-        A.RandomGamma(p=0.1),
+        A.RandomGamma(gamma_limit=(70, 130), eps=1e-7, p=0.1),  # More conservative range & added eps
         ToTensorV2(p=1.0),
     ], bbox_params=A.BboxParams(
         format='pascal_voc',
